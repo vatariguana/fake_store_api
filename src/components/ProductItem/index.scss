@@ -1,0 +1,25 @@
+.productItem {
+  // height: 250px;
+  // margin: 20px;
+  // background-color: white;
+  // text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  .container-items {
+    width: 300px;
+    height: 250px;
+    margin: 20px;
+    background-color: white;
+    display: inline-grid;
+    align-content: center;
+    justify-content: center;
+    .item {
+      text-align: center;
+
+      .item-image {
+        width: 100px;
+      }
+    }
+  }
+}
