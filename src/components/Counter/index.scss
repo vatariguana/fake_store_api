@@ -1,0 +1,29 @@
+.counter-container {
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  width: 226px;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  .decrement {
+    width: 60px;
+    border: none;
+    padding: 4px;
+    border: 1px solid gray;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+  }
+  .counter {
+    width: 100px;
+    padding: 4px;
+    border: 1px solid gray;
+  }
+  .increment {
+    width: 60px;
+    border: none;
+    padding: 4px;
+    border: 1px solid gray;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+}
