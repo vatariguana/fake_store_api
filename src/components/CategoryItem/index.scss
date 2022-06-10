@@ -1,0 +1,15 @@
+@import "../../assets/styles/var";
+.container-category {
+  padding: 2px 12px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  p {
+    background-color: white;
+    margin: 0;
+    border: 2px solid $primaryColor;
+    text-align: center;
+    padding: 2px;
+    border-radius: 4px;
+  }
+}

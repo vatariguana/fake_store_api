@@ -1,34 +1,22 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../redux/Actions";
+import React from "react";
 import "./index.scss";
-const ProductItem = () => {
-  const dispatch = useDispatch();
-  const { productsAll } = useSelector(({ AllProducts }) => AllProducts);
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, []);
-  //   console.log(productsAll, "info del reducer");
+const ProductItem = (props) => {
+  const { item } = props;
+
   return (
-    <div className="productItem">
-      {productsAll?.map((item) => {
-        return (
-          <div className="container-items">
-            <div className="item">
-              <img className="item-image" src={item?.image} alt="product"></img>
-            </div>
-            <div className="item">
-              <label>{item?.category}</label>
-            </div>
-            <div className="item">
-              <label>{item?.title}</label>
-            </div>
-            <div className="item">
-              <label>US ${item.price}</label>
-            </div>
-          </div>
-        );
-      })}
+    <div className="container-item">
+      <div className="item-image">
+        <img src={item?.image} alt="product" />
+      </div>
+      <div className="item-category">
+        <p>{item?.category}</p>
+      </div>
+      <div className="item-title">
+        <p className="truncate">{item?.title}</p>
+      </div>
+      <div className="item-price">
+        <p>${item.price}</p>
+      </div>
     </div>
   );
 };

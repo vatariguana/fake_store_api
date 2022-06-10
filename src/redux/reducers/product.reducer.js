@@ -1,30 +1,30 @@
 const initialState = {
     isLoading: false,
     errors: null,
-    productsAll: null,
+    products: null,
   };
   
-  function AllProducts(state = initialState, action) {
+  function productReducer(state = initialState, action) {
     switch (action.type) {
       case "GET_LOADING_ALL_PRODUCTS":
         return {
           ...state,
           isLoading: true,
           errors: null,
-          productsAll: null,
+          products: null,
         };
       case "GET_ALL_PRODUCTS":
         return {
           ...state,
           isLoading: false,
           errors: null,
-          productsAll: action.payload,
+          products: action.payload,
         };
         case "GET_ERRORS_PRODUCTS":
           return {
             ...state,
             isLoading: false,
-          productsAll: null,
+          products: null,
             errors: action.payload,
           };
       default:
@@ -32,4 +32,4 @@ const initialState = {
     }
   }
   
-  export default AllProducts;
+  export default productReducer;
