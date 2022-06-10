@@ -27,6 +27,7 @@ const initialState = {
           categories: null,
             errors: action.payload,
           };
+         
       default:
         return state;
     }

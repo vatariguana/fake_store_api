@@ -8,10 +8,16 @@
   display: inline-grid;
   align-content: center;
   justify-content: center;
+  border: 2px solid white;
 
   border-radius: 10px;
   padding: 12px 6px;
   text-align: center;
+  &:hover {
+    cursor: pointer;
+    border: 2px solid $primaryColor;
+  }
+
   .item-image {
     img {
       width: 100px;
@@ -37,5 +43,9 @@
     color: #b24f00;
     font-weight: bolder;
     font-size: 22px;
+    img {
+      width: 32px;
+      z-index: 2;
+    }
   }
 }

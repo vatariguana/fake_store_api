@@ -4,4 +4,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  .nav-link {
+    text-decoration: none;
+    color: black;
+  }
 }

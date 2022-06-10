@@ -1,14 +1,14 @@
-import Home from "./views/Home";
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
+import Routes from "./Routes";
+const browserHistory = createBrowserHistory();
 
 function App() {
-  
   return (
-    <div className="App">
-      <header className="App-header">
-       <Home/>
-      </header>
-    </div>
+    <Router history={browserHistory}>
+      <Routes />
+    </Router>
   );
 }
 

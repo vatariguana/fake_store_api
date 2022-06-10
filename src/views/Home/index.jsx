@@ -5,9 +5,11 @@ import { getAllProducts } from "../../redux/actions/products";
 import { getAllCategories } from "../../redux/actions/categories";
 import "./index.scss";
 import CategoryList from "../../components/CategoryList";
+import ProductDetail from "../ProductDetail";
 
 const Home = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllCategories());

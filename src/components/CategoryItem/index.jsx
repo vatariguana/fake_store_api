@@ -1,11 +1,11 @@
 import React from "react";
 import "./index.scss";
 const CategoryItem = (props) => {
-  const { item } = props;
-
+  const { item, handleClick, active } = props;
+  console.log("active", active);
   return (
-    <div className="container-category">
-      <p>{item}</p>
+    <div onClick={() => handleClick(item)} className="container-category ">
+      <p className={`${item === active ? "active" : ""}`}>{item}</p>
     </div>
   );
 };

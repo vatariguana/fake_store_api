@@ -1,9 +1,10 @@
 @import "../../assets/styles/var";
 .container-category {
   padding: 2px 12px;
-  width: 100%;
+  width: 170px;
   padding: 10px;
   border-radius: 4px;
+
   p {
     background-color: white;
     margin: 0;
@@ -11,5 +12,17 @@
     text-align: center;
     padding: 2px;
     border-radius: 4px;
+    text-transform: uppercase;
+    &.active {
+      background-color: $primaryColor;
+      color: white;
+    }
+    &:hover {
+      cursor: pointer;
+      border: 2px solid #ff923b;
+
+      background-color: #ff923b;
+      color: white;
+    }
   }
 }
