@@ -2,11 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.scss";
 
-const BackButton = () => {
+const BackButton = (props) => {
+  const { url } = props;
   const history = useNavigate();
 
   const handleBack = () => {
-    history("/");
+    history(url);
   };
 
   return (

@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ShopCart from "../../assets/images/shopcart.png";
 import {
   addShoppingCart,
   resetProcess,
 } from "../../redux/actions/shoppingCart";
+import Toast from "../Toast";
 import "./index.scss";
 
 const ProductItem = (props) => {
   const { item, history } = props;
   const dispatch = useDispatch();
+  const [toast, setToast] = useState(false);
 
   const { success } = useSelector(
     ({ shoppingCartReducer }) => shoppingCartReducer
@@ -17,9 +19,7 @@ const ProductItem = (props) => {
 
   useEffect(() => {
     if (success) {
-      // alert("agregado al carrito");
       dispatch(resetProcess());
-      history("/cartList");
     }
   }, [success]);
 
@@ -33,6 +33,11 @@ const ProductItem = (props) => {
     item.amount = 1;
     item.subTotal = 1 * item.price;
     dispatch(addShoppingCart(item));
+    setToast(true);
+
+    setTimeout(() => {
+      setToast(false);
+    }, 2000);
   };
 
   return (
@@ -52,6 +57,10 @@ const ProductItem = (props) => {
           <img src={ShopCart} alt="Shopcart" />
         </div>
       </div>
+      <Toast
+        title="Producto agregado al carrito de compras"
+        isVisible={toast}
+      />
     </div>
   );
 };

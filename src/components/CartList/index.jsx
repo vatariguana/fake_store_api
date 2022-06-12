@@ -59,13 +59,23 @@ const CartList = () => {
     for (let i = 0; i < cart?.length; i++) {
       total += cart[i].subTotal;
     }
-    return total;
+    return total.toFixed(2);
   };
 
   const total = getTotal();
 
   const handleBuy = () => {
     history("/cartList/buy");
+  };
+
+  const handleDeleteItem = (productId) => {
+    const allProducts = JSON.parse(localStorage.getItem("shoppingCart"));
+
+    const updatedLocalStorage = allProducts.filter((item) => {
+      return item.id !== productId;
+    });
+    localStorage.setItem("shoppingCart", JSON.stringify(updatedLocalStorage));
+    dispatch(getShoppingCart());
   };
 
   return (
@@ -111,7 +121,9 @@ const CartList = () => {
                       }
                     })}
                     <td className="td-text">
-                      <img src={TrashIcon} alt="delete" width={18} />
+                      <div onClick={() => handleDeleteItem(elemento.id)}>
+                        <img src={TrashIcon} alt="delete" width={18} />
+                      </div>
                     </td>
                   </tr>
                 );

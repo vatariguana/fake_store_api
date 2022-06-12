@@ -45,7 +45,6 @@ export const addShoppingCart = (data) => async (dispatch) => {
 };
 
 export const resetProcess = () => async (dispatch) => {
-  console.log("entroo");
   dispatch({
     type: "SUCCESS_SHOPPING_CART",
     payload: false,

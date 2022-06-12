@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import InputForm from "../../components/InputForm";
-import Modal from "../../components/Modal";
+import BackButton from "../../components/BackButton";
 import "./index.scss";
+import Toast from "../../components/Toast";
 
 const Buy = () => {
+  const history = useNavigate();
   const [formStates, setFormStates] = useState({
     name: "",
     email: "",
@@ -11,23 +14,63 @@ const Buy = () => {
     city: "",
     phone: "",
   });
+  const [toast, setToast] = useState({
+    title: "",
+    toast: false,
+  });
+
+  const validatePhoneNumber = (key, value) => {
+    if (key === "phone" && isNaN(value)) {
+      setToast({
+        title: "Debe ser un numero",
+        isVisible: true,
+        status: "error",
+      });
+      setTimeout(() => {
+        setToast({
+          title: "",
+          isVisible: false,
+        });
+      }, 1000);
+      return false;
+    }
+    return true;
+  };
 
   const handleChange = (e, key) => {
     const value = e.target.value;
-    setFormStates({
-      ...formStates,
-      [key]: value,
-    });
+    const isValidInputForm = validatePhoneNumber(key, value);
+
+    if (isValidInputForm) {
+      setFormStates({
+        ...formStates,
+        [key]: value,
+      });
+    }
   };
 
-  const handleSubmit = () => {
-    console.log("borrar localstorage");
+  const handleSubmit = (e) => {
+    e.preventDefault();
     localStorage.removeItem("shoppingCart");
+    setToast({
+      title: "Compra realizada con exito",
+      isVisible: true,
+      status: "success",
+    });
+
+    setTimeout(() => {
+      setToast({
+        title: "",
+        isVisible: true,
+      });
+      history("/");
+    }, 2000);
   };
   return (
     <div className="buy-container">
+      <BackButton url="/cartList" />
       <h2>Para Continuar con la compra complete los siguientes campos:</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <InputForm
           label="Nombre"
           name="name"
@@ -71,34 +114,14 @@ const Buy = () => {
           isRequired
         />
 
-        <label class="btn" for="modal-1" onClick={handleSubmit}>
-          Finalizar compra
-        </label>
+        <button type="submit">Finalizar compra</button>
       </form>
-      <Modal>
-        <h1>Compra Finalizada</h1>
-        <p className="title">Datos del comprador</p>
-        <p>
-          <span>Nombre: </span>
-          {formStates.name}
-        </p>
-        <p>
-          <span>Email: </span>
-          {formStates.email}
-        </p>
-        <p>
-          <span>Direccion: </span>
-          {formStates.address}
-        </p>
-        <p>
-          <span>Ciudad: </span>
-          {formStates.city}
-        </p>
-        <p>
-          <span>Telefono: </span>
-          {formStates.phone}
-        </p>
-      </Modal>
+
+      <Toast
+        status={toast.status}
+        title={toast.title}
+        isVisible={toast.isVisible}
+      />
     </div>
   );
 };

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import BackButton from "../../components/BackButton";
 import Counter from "../../components/Counter";
+import RatingStar from "../../components/Rating";
+import Toast from "../../components/Toast";
 import { getProductDetail } from "../../redux/actions/products";
 import {
   addShoppingCart,
@@ -12,7 +14,6 @@ import "./index.scss";
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const history = useNavigate();
   const productId = location.pathname.split("/")[2];
 
   const { productDetail } = useSelector(({ productReducer }) => productReducer);
@@ -20,14 +21,15 @@ const ProductDetail = () => {
     ({ shoppingCartReducer }) => shoppingCartReducer
   );
   const [counter, setCounter] = useState(1);
+  const [toast, setToast] = useState(false);
+
   useEffect(() => {
     dispatch(getProductDetail(productId));
   }, []);
+
   useEffect(() => {
     if (success) {
-      alert("agregado al carrito");
       dispatch(resetProcess());
-      history("/");
     }
   }, [success]);
 
@@ -36,6 +38,11 @@ const ProductDetail = () => {
     productDetail.subTotal = counter * productDetail.price;
 
     dispatch(addShoppingCart(productDetail));
+    setToast(true);
+
+    setTimeout(() => {
+      setToast(false);
+    }, 2000);
   };
 
   const handleDecrement = () => {
@@ -56,7 +63,10 @@ const ProductDetail = () => {
           <div className="title-detail">{productDetail?.title}</div>
           <div className="rating-container">
             <div className="rating-detail">
-              {productDetail?.rating?.count} {productDetail?.rating?.rate}
+              <RatingStar
+                rate={productDetail?.rating?.rate}
+                count={productDetail?.rating?.count}
+              />
             </div>
           </div>
           <div className="price-detail">${productDetail?.price}</div>
@@ -74,6 +84,11 @@ const ProductDetail = () => {
           <div className="description-detail">{productDetail?.description}</div>
         </div>
       </div>
+
+      <Toast
+        title="Producto agregado al carrito de compras"
+        isVisible={toast}
+      />
     </div>
   );
 };
