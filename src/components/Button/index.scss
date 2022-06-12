@@ -1,0 +1,25 @@
+@import "../../assets/styles/var";
+.button-container {
+  button {
+    display: flex;
+    align-items: center;
+    background-color: $primaryColor;
+    border: 0;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      background-color: $primaryColorLight;
+    }
+    img {
+      margin-left: 5px;
+    }
+    &.disabled {
+      background-color: #999;
+      cursor: default;
+    }
+  }
+}

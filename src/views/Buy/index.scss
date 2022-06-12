@@ -1,0 +1,32 @@
+@import "../../assets/styles/var";
+.buy-container {
+  margin: 48px;
+  text-align: center;
+  form {
+    width: 450px;
+    margin: 0 auto;
+    .btn {
+      display: flex;
+      align-items: center;
+      background-color: $primaryColor;
+      border: 0;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 125px;
+      &:hover {
+        background-color: $primaryColorLight;
+      }
+    }
+  }
+  .title {
+    color: $primaryColor;
+    font-weight: bold;
+  }
+  span {
+    font-weight: bold;
+  }
+}

@@ -1,13 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.scss";
-const Counter = () => {
-  const [counter, setCounter] = useState(1);
-  const handleDecrement = () => {
-    setCounter(counter - 1);
-  };
-  const handleIncrement = () => {
-    setCounter(counter + 1);
-  };
+const Counter = (props) => {
+  const { handleIncrement, handleDecrement, counter } = props;
   return (
     <div className="counter-container">
       <button

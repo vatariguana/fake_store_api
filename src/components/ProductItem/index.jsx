@@ -1,17 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ShopCart from "../../assets/images/shopcart.png";
+import {
+  addShoppingCart,
+  resetProcess,
+} from "../../redux/actions/shoppingCart";
 import "./index.scss";
+
 const ProductItem = (props) => {
   const { item, history } = props;
+  const dispatch = useDispatch();
 
-  const handleAddShopcart = (e) => {
-    e.stopPropagation();
-    console.log("agregar a carrito", item);
-  };
+  const { success } = useSelector(
+    ({ shoppingCartReducer }) => shoppingCartReducer
+  );
+
+  useEffect(() => {
+    if (success) {
+      // alert("agregado al carrito");
+      dispatch(resetProcess());
+      history("/cartList");
+    }
+  }, [success]);
 
   const handleDetail = () => {
     history(`/products/${item.id}`);
+  };
+
+  const handleAddShoppingCart = (e) => {
+    e.stopPropagation();
+
+    item.amount = 1;
+    item.subTotal = 1 * item.price;
+    dispatch(addShoppingCart(item));
   };
 
   return (
@@ -26,8 +47,8 @@ const ProductItem = (props) => {
         <p className="truncate">{item?.title}</p>
       </div>
       <div className="item-price">
-        <p>${item.price}</p>
-        <div onClick={handleAddShopcart}>
+        <p>${item?.price}</p>
+        <div onClick={(e) => handleAddShoppingCart(e)}>
           <img src={ShopCart} alt="Shopcart" />
         </div>
       </div>

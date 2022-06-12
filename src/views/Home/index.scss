@@ -1,8 +1,14 @@
+@import "../../assets/styles/var";
 .home {
   display: flex;
   flex-wrap: wrap;
+  .shopping-cart-button {
+    margin: 24px 24px 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
   .container-categories {
-    // width: 700px;
     margin-top: 30px;
     margin-left: 32px;
   }

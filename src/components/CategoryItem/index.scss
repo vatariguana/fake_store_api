@@ -19,9 +19,9 @@
     }
     &:hover {
       cursor: pointer;
-      border: 2px solid #ff923b;
+      border: 2px solid $primaryColorLight;
 
-      background-color: #ff923b;
+      background-color: $primaryColorLight;
       color: white;
     }
   }

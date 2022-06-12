@@ -1,18 +1,6 @@
 @import "../../assets/styles/var";
 .product-detail {
   margin: 48px;
-  .back {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    span {
-      font-size: 24px;
-    }
-    &:hover {
-      color: $primaryColor;
-    }
-  }
-
   .product-detail-container {
     display: flex;
     align-items: center;
@@ -51,6 +39,17 @@
       .rating-container {
         .rating-detail {
         }
+      }
+      .add-shopping-cart {
+        border: 1px solid $primaryColor;
+        width: 214px;
+        padding: 6px;
+        text-align: center;
+        border-radius: 4px;
+        margin-top: 20px;
+        background-color: white;
+        color: $primaryColor;
+        cursor: pointer;
       }
     }
   }

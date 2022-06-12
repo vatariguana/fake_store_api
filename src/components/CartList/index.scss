@@ -1,0 +1,56 @@
+@import "../../assets/styles/var";
+.cart-list-container {
+  margin: 48px;
+  .cart-list {
+    display: flex;
+    margin-top: 24px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 16px;
+    .table {
+      width: 100%;
+      .thead-container {
+        display: contents;
+        .header {
+          display: contents;
+          .th-header {
+            border-bottom: 1px solid $primaryColor;
+
+            padding: 4px;
+          }
+        }
+      }
+      .tbody-container {
+        .tr-body {
+          .td-image {
+            border-bottom: 1px solid $primaryColor;
+
+            padding: 4px;
+            text-align: center;
+            img {
+              margin-top: 4px;
+              width: 50px;
+              border-radius: 4px;
+              margin-bottom: 8px;
+              margin-left: 4px;
+            }
+          }
+          .td-text {
+            border-bottom: 1px solid $primaryColor;
+            text-align: center;
+            img {
+              cursor: pointer;
+            }
+          }
+        }
+        .billing {
+          text-align: right;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .buy-button {
+    margin-top: 24px;
+  }
+}

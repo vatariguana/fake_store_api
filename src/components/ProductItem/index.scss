@@ -28,16 +28,13 @@
     padding: 0;
   }
   .item-category {
-    background-color: $primaryColor;
+    background-color: $primaryColorLight;
     padding: 0px 10px 4px 10px;
     border-radius: 4px;
     margin: 8px auto;
     color: white;
     font-weight: 600;
     width: 130px;
-  }
-  .item-title {
-    // width: 200px;
   }
   .item-price {
     color: #b24f00;
