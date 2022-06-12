@@ -8,7 +8,7 @@ const ShoppingCartButton = () => {
   const history = useNavigate();
   const shoppingCartCount = JSON.parse(
     localStorage.getItem("shoppingCart")
-  ).length;
+  )?.length;
   return (
     <div className="shopping-cart-button">
       <Button

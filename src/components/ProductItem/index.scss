@@ -4,11 +4,11 @@
   width: 250px;
   height: 300px;
   margin: 20px;
-  background-color: white;
+  background-color: $white;
   display: inline-grid;
   align-content: center;
   justify-content: center;
-  border: 2px solid white;
+  border: 2px solid $white;
 
   border-radius: 10px;
   padding: 12px 6px;
@@ -30,15 +30,15 @@
   .item-category {
     background-color: $primaryColorLight;
     padding: 0px 10px 4px 10px;
-    border-radius: 4px;
+    border-radius: $borderRadius4;
     margin: 8px auto;
-    color: white;
+    color: $white;
     font-weight: 600;
     width: 130px;
   }
   .item-price {
     color: #b24f00;
-    font-weight: bolder;
+    font-weight: $fontWeigthBold;
     font-size: 22px;
     img {
       width: 32px;

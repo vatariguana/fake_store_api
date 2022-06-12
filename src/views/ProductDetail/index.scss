@@ -4,7 +4,7 @@
   .product-detail-container {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: $white;
     padding: 24px;
     border-radius: 10px;
     .image-detail {
@@ -19,12 +19,12 @@
       .category-detail {
         color: $primaryColor;
         font-size: 18px;
-        font-weight: bolder;
+        font-weight: $fontWeigthBold;
         margin-bottom: 16px;
       }
       .title-detail {
         font-size: 28px;
-        font-weight: bolder;
+        font-weight: $fontWeigthBold;
         color: #444;
       }
       .divider {
@@ -43,9 +43,9 @@
         width: 214px;
         padding: 6px;
         text-align: center;
-        border-radius: 4px;
+        border-radius: $borderRadius4;
         margin-top: 20px;
-        background-color: white;
+        background-color: $white;
         color: $primaryColor;
         cursor: pointer;
       }

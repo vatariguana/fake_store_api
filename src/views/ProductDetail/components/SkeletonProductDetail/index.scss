@@ -3,12 +3,12 @@
 .skeleton-product-detail-container {
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: $white;
   padding: 24px;
   border-radius: 10px;
   .skeleton-product-detail {
     background-color: $loadingGray;
-    border-radius: 4px;
+    border-radius: $borderRadius4;
     margin: 4px;
     &.image {
       width: 300px;
@@ -44,7 +44,7 @@
     border: 1px solid $loadingGray;
     background-color: white;
     margin-bottom: 24px;
-    border-radius: 4px;
+    border-radius: $borderRadius4;
   }
 
   @media only screen and (max-width: 600px) {
