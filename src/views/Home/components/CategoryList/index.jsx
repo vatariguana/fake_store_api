@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProductsByCategory } from "../../redux/actions/products";
-import CategoryItem from "../CategoryItem";
+import { getAllProductsByCategory } from "../../../../redux/actions/products";
+import CategoryItem from "../../../../components/CategoryItem";
+import SkeletonCategory from "../../../../components/CategoryItem/components/SkeletonCategory";
 import "./index.scss";
 const CategoryList = () => {
-  const { categories } = useSelector(({ categoryReducer }) => categoryReducer);
+  const { isLoading, categories } = useSelector(
+    ({ categoryReducer }) => categoryReducer
+  );
 
   const dispatch = useDispatch();
   const [active, setActive] = useState("All categories");
@@ -13,6 +16,18 @@ const CategoryList = () => {
     setActive(item);
     dispatch(getAllProductsByCategory(item));
   };
+
+  if (isLoading) {
+    return (
+      <div className="category-list">
+        <SkeletonCategory />
+        <SkeletonCategory />
+        <SkeletonCategory />
+        <SkeletonCategory />
+        <SkeletonCategory />
+      </div>
+    );
+  }
 
   return (
     <div className="category-list">

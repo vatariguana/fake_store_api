@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getShoppingCart } from "../../redux/actions/shoppingCart";
-import TrashIcon from "../../assets/images/trash.png";
-import "./index.scss";
-import BackButton from "../BackButton";
 import { useNavigate } from "react-router-dom";
-import Button from "../Button";
+import { getShoppingCart } from "../../redux/actions/shoppingCart";
+import BackButton from "../../components/BackButton";
+import Button from "../../components/Button";
+import "./index.scss";
 
 const CartList = () => {
   const dispatch = useDispatch();
@@ -16,6 +15,7 @@ const CartList = () => {
   );
   useEffect(() => {
     dispatch(getShoppingCart());
+    //eslint-disable-next-line
   }, []);
 
   const headers = [
@@ -81,7 +81,6 @@ const CartList = () => {
   return (
     <div className="cart-list-container">
       <BackButton url="/" />
-
       <div className="cart-list">
         <table className="table">
           <thead className="thead-container">
@@ -122,7 +121,7 @@ const CartList = () => {
                     })}
                     <td className="td-text">
                       <div onClick={() => handleDeleteItem(elemento.id)}>
-                        <img src={TrashIcon} alt="delete" width={18} />
+                        <i className="fas fa-trash-alt" />
                       </div>
                     </td>
                   </tr>

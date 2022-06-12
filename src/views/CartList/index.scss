@@ -38,8 +38,9 @@
           .td-text {
             border-bottom: 1px solid $primaryColor;
             text-align: center;
-            img {
+            i:hover {
               cursor: pointer;
+              color: $primaryColor;
             }
           }
         }
@@ -52,5 +53,11 @@
   }
   .buy-button {
     margin-top: 24px;
+  }
+  @media only screen and (max-width: 600px) {
+    margin: 48px 16px;
+    .cart-list {
+      overflow-x: auto;
+    }
   }
 }

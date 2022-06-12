@@ -3,20 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import BackButton from "../../components/BackButton";
 import Counter from "../../components/Counter";
-import RatingStar from "../../components/Rating";
+import RatingStar from "../../components/RatingStar";
+import ShoppingCartButton from "../../components/ShoppingCartButton";
 import Toast from "../../components/Toast";
 import { getProductDetail } from "../../redux/actions/products";
 import {
   addShoppingCart,
   resetProcess,
 } from "../../redux/actions/shoppingCart";
+import SkeletonProductDetail from "./components/SkeletonProductDetail";
 import "./index.scss";
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const productId = location.pathname.split("/")[2];
 
-  const { productDetail } = useSelector(({ productReducer }) => productReducer);
+  const { isLoading, productDetail } = useSelector(
+    ({ productReducer }) => productReducer
+  );
   const { success } = useSelector(
     ({ shoppingCartReducer }) => shoppingCartReducer
   );
@@ -25,12 +29,14 @@ const ProductDetail = () => {
 
   useEffect(() => {
     dispatch(getProductDetail(productId));
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     if (success) {
       dispatch(resetProcess());
     }
+    //eslint-disable-next-line
   }, [success]);
 
   const handleAddShoppingCart = () => {
@@ -51,8 +57,20 @@ const ProductDetail = () => {
   const handleIncrement = () => {
     setCounter(counter + 1);
   };
+
+  if (isLoading) {
+    return (
+      <div className="product-detail">
+        <ShoppingCartButton />
+        <BackButton url="/" />
+        <SkeletonProductDetail />
+      </div>
+    );
+  }
+
   return (
     <div className="product-detail">
+      <ShoppingCartButton />
       <BackButton url="/" />
       <div className="product-detail-container">
         <div className="image-detail">

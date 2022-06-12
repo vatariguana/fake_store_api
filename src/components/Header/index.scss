@@ -1,0 +1,24 @@
+@import "../../assets/styles/var";
+.header {
+  background-color: $primaryColor;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    width: 200px;
+  }
+  a {
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    i {
+      margin-right: 8px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}

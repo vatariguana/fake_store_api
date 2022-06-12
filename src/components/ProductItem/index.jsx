@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ShopCart from "../../assets/images/shopcart.png";
 import {
   addShoppingCart,
   resetProcess,
@@ -21,6 +20,7 @@ const ProductItem = (props) => {
     if (success) {
       dispatch(resetProcess());
     }
+    //eslint-disable-next-line
   }, [success]);
 
   const handleDetail = () => {
@@ -54,7 +54,7 @@ const ProductItem = (props) => {
       <div className="item-price">
         <p>${item?.price}</p>
         <div onClick={(e) => handleAddShoppingCart(e)}>
-          <img src={ShopCart} alt="Shopcart" />
+          <i className="fab fa-opencart" />
         </div>
       </div>
       <Toast

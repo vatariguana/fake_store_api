@@ -2,17 +2,17 @@
 .home {
   display: flex;
   flex-wrap: wrap;
-  .shopping-cart-button {
-    margin: 24px 24px 0 0;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
   .container-categories {
     margin-top: 30px;
     margin-left: 32px;
   }
   .container-product {
     margin: 24px 0;
+  }
+  @media only screen and (max-width: 600px) {
+    .container-categories {
+      margin: 0;
+      margin: 0;
+    }
   }
 }

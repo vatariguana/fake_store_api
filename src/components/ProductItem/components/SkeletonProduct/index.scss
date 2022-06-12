@@ -1,0 +1,38 @@
+@import "../../../../assets/styles/var";
+
+.skeleton-product-container {
+  width: 250px;
+  height: 300px;
+  margin: 20px;
+  background-color: white;
+  display: inline-grid;
+  align-content: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 12px 6px;
+  .skeleton-product {
+    background-color: $loadingGray;
+    border-radius: 4px;
+    margin: 4px auto;
+    &.image {
+      width: 100px;
+      height: 120px;
+    }
+    &.category {
+      width: 150px;
+      height: 25px;
+    }
+    &.title {
+      width: 200px;
+      height: 12px;
+    }
+    &.price {
+      width: 100px;
+      height: 25px;
+    }
+    &.shoppingCart {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

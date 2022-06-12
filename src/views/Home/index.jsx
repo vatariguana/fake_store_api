@@ -1,39 +1,30 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import ProductList from "../../components/ProductList";
 import { getAllProducts } from "../../redux/actions/products";
 import { getAllCategories } from "../../redux/actions/categories";
-import CategoryList from "../../components/CategoryList";
-import ShopCart from "../../assets/images/shopcart.png";
+import ProductList from "./components/ProductList";
+import CategoryList from "./components/CategoryList";
 import "./index.scss";
-import Button from "../../components/Button";
+import ShoppingCartButton from "../../components/ShoppingCartButton";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const history = useNavigate();
 
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllCategories());
+    //eslint-disable-next-line
   }, []);
 
   return (
     <div className="home">
-      <div className="shopping-cart-button">
-        <Button
-          onClick={() => history("/cartList")}
-          text="Shopping Cart"
-          icon={<img width={32} src={ShopCart} alt="Shopcart" />}
-        />
-      </div>
+      <ShoppingCartButton />
       <div className="container-categories">
         <CategoryList />
       </div>
       <div className="container-product">
         <ProductList />
       </div>
-      <div className="footer">footer aqui</div>
     </div>
   );
 };

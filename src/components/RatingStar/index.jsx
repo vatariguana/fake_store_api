@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 const RatingStar = (props) => {
-  const { rate, count } = props;
+  const { rate, count, disabled } = props;
   let starComp = [];
 
   const isFloat = (num) => {
@@ -26,11 +26,13 @@ const RatingStar = (props) => {
   }
 
   return (
-    <div className="rating-star-container">
+    <div
+      className={`rating-star-container ${disabled ? "disabled" : "active"}`}
+    >
       {starComp.map((item) => {
         return <i className={item} />;
       })}
-      ({count})
+      ({count || 0})
     </div>
   );
 };

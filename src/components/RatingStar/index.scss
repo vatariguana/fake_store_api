@@ -1,0 +1,15 @@
+@import "../../assets/styles/var";
+
+.rating-star-container {
+  margin: 4px 0;
+  &.disabled {
+    i {
+      color: $loadingGray;
+    }
+  }
+  &.active {
+    i {
+      color: #ffce36;
+    }
+  }
+}
